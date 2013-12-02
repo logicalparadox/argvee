@@ -10,16 +10,15 @@
 
 #### Usage
 
-The electron argument parser takes the node.js standard
+The `argvee` argument parser takes the node.js standard
 `process.argv` array and constructs an object with helpers
-that can easily be queried. This helper is publicly exposed
-so it can be used independant of the cli framework.
+that can easily be queried. 
 
 ```js
 var argv = require('argvee')();
 ```
 
-When constructed, the electron argv parser recognizes three
+When constructed, the argv collection recognizes three
 types command line arguments: _commands_, _modes_, and _parameters_.
 
 Each of these types also has a helper that will provide quick access
@@ -34,6 +33,7 @@ Essentially, they are a list of keys.
 ```js
 // $ node cli.js hello universe
 argv.commands === [ 'hello', 'universe' ];
+argv.command('hello'); // => true
 ```
 
 ##### Modes
@@ -45,6 +45,7 @@ it begins with a single `-`, each letter will be parsed as its own mode.
 ```js
 // $ node cli.js --universe -abc
 argv.modes === [ 'universe', 'a', 'b', 'c' ];
+argv.mode('a', 'd'); // => true (as a exists)
 ```
 
 ##### Parameters
@@ -60,9 +61,12 @@ argv.params === {
   , topic: [ 'hello' ]
   , w: [ 'now' ]
 };
+
+argv.param('noun'); // => [ 'universe', 'world' ]
+// note: merges all params that exist if multiple arguments given
 ```
 
-You can also specify paramters with multiple words by surrounding the
+You can also specify parameters with multiple words by surrounding the
 phrase with double-quotes.
 
 ```js
