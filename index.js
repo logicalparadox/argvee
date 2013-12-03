@@ -25,11 +25,14 @@ module.exports = Args;
 function Args(args) {
   if (!(this instanceof Args)) return new Args(args);
   args = args || process.argv;
+  if ('string' === typeof args) args = args.split(/\s/);
   assert(Array.isArray(args), 'argvee: argument or process.argv must be an array');
-  this.__args = args
+
+  this.args = args;
   this.commands = [];
   this.modes = [];
   this.params = {};
+
   parse(this);
 }
 
@@ -84,6 +87,7 @@ function filter(which) {
   }
 }
 
+
 /*!
  * ### parse(args)
  *
@@ -97,14 +101,14 @@ function filter(which) {
  * @api private
  */
 
-function parse(self) {
-  var args = self.__args;
+function parse(target) {
+  var args = target.args;
   var isStr = false;
   var param_key = null;
 
-  var commands = self.commands;
-  var modes = self.modes;
-  var params = self.params;
+  var commands = target.commands;
+  var modes = target.modes;
+  var params = target.params
 
   function checkParamKey() {
     if (param_key === null) return;
@@ -128,7 +132,7 @@ function parse(self) {
       part = part.substr(1);
       if (part.length === 1) return setKey(part);
       if (~part.indexOf('=')) return addParam(params, part);
-      self.modes = modes.concat(part.split(''));
+      target.modes = modes.concat(part.split(''));
       return;
     }
 
@@ -154,7 +158,8 @@ function parse(self) {
   });
 
   checkParamKey();
-}
+};
+
 
 /*!
  * Add a param to the param list.
