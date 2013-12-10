@@ -13,10 +13,12 @@
   },
   "main": "./index",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "coverage": "./node_modules/.bin/istanbul cover test/"
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "*"
+    "chai": "*",
+    "istanbul": "~0.1.46"
   }
 }
