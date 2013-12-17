@@ -1,7 +1,6 @@
-docs/
-test/
-coverage.html
-lib-cov
+/docs/
+/test/
+/coverage/
 .travis.yml
 Makefile
 *.swp

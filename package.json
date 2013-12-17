@@ -13,11 +13,12 @@
   },
   "main": "./index",
   "scripts": {
-    "test": "hydro"
+    "test": "node test",
+    "coverage": "./node_modules/.bin/istanbul cover test/"
   },
   "dependencies": {},
   "devDependencies": {
     "chai": "*",
-    "hydro": "~0.6.0"
+    "istanbul": "~0.1.46"
   }
 }

@@ -87,7 +87,6 @@ function filter(which) {
   }
 }
 
-
 /*!
  * ### parse(args)
  *
@@ -158,8 +157,7 @@ function parse(target) {
   });
 
   checkParamKey();
-};
-
+}
 
 /*!
  * Add a param to the param list.
