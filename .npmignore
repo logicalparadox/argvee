@@ -1,6 +1,5 @@
 /docs/
 /test/
 /coverage/
-.travis.yml
-Makefile
+/.nyc_output/
 *.swp

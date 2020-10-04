@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "mocha", "chai"],
+    "outDir": "lib",
+    "declaration": true,
+    "sourceMap": true
+  },
+  "compileOnSave": true,
+  "include": ["src"]
+}

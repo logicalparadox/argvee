@@ -1,6 +1,6 @@
 {
   "name": "argvee",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "argv parsing (that is actually useful)",
   "author": "Jake Luer <jake@alogicalparadox.com> (http://alogicalparadox.com)",
   "license": "MIT",
@@ -11,14 +11,45 @@
   "engines": {
     "node": "*"
   },
-  "main": "./index",
+  "main": "./lib/index",
   "scripts": {
-    "test": "node test",
-    "coverage": "./node_modules/.bin/istanbul cover test/"
+    "build": "tsc",
+    "lint": "eslint \"{src,test}/**/*.{js,ts,tsx}\"",
+    "test": "mocha",
+    "coverage": "nyc mocha",
+    "docs": "typedoc --plugin typedoc-plugin-markdown --excludeNotDocumented src/"
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "*",
-    "istanbul": "~0.1.46"
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@tsconfig/node12": "^1.0.7",
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "chai": "^4.2.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-tsdoc": "^0.2.7",
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0",
+    "prettier": "^2.1.2",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2",
+    "typedoc-plugin-markdown": "^3.0.4",
+    "typescript": "^4.0.3"
+  },
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "source-map-support/register",
+      "chai/register-should"
+    ]
   }
 }
