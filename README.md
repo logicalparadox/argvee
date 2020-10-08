@@ -16,6 +16,7 @@ that can easily be queried.
 
 ```js
 import { parse } from 'argvee';
+const argv = parse(process.argv);
 ```
 
 When constructed, the argv collection recognizes three
